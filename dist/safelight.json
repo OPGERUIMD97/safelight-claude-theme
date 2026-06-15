@@ -1,0 +1,8 @@
+{
+  "id": "claude-theme",
+  "name": "Claude Theme",
+  "version": "1.0.0",
+  "description": "Warm dark theme inspired by Claude's color palette — Crail (#C15F3C), Pampas (#F4F3EE), Cloudy (#B1ADA1)",
+  "author": "OPGERUIMD97",
+  "main": "dist/index.js"
+}
