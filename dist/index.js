@@ -1,68 +1,57 @@
-export function activate(api) {
-  // ─────────────────────────────────────────────────────────────
-  // Claude Theme for Safelight
-  // Palette:
-  //   Crail    #C15F3C  — warm roest-oranje (accent)
-  //   Pampas   #F4F3EE  — gebroken wit (primaire tekst)
-  //   Cloudy   #B1ADA1  — lichtgrijs (subtiele tekst / iconen)
-  //   Dark backgrounds gebaseerd op warme Stone-tinten
-  // ─────────────────────────────────────────────────────────────
+// Claude — Warm Dark theme for Safelight
+// Palette:
+//   Crail   #C15F3C  — warm rust-orange (accent)
+//   Pampas  #F4F3EE  — off-white (primary text)
+//   Cloudy  #B1ADA1  — light grey (muted text)
+//   Stone   #1C1917  — darkest background
 
+export function activate(api) {
   api.registerTheme({
-    id:          "claude-theme.dark",
-    name:        "Claude — Warm Dark",
+    id: "claude-theme.dark",
+    name: "Claude — Warm Dark",
     colorScheme: "dark",
     vars: {
-      // Achtergronden (surface 0 = diepste laag, 3 = hoogste/hover)
-      "--color-surface-0":  "#1C1917",   // diepste achtergrond (app bg)
-      "--color-surface-1":  "#292524",   // panels / sidebars
-      "--color-surface-2":  "#3C3836",   // cards / inputvelden
-      "--color-surface-3":  "#504A47",   // hover states
+      // Surfaces (0 = deepest, 4 = hover/highlight)
+      "--color-surface-0":      "#1C1917",
+      "--color-surface-1":      "#292524",
+      "--color-surface-2":      "#3C3836",
+      "--color-surface-3":      "#504A47",
+      "--color-surface-4":      "#615A56",
 
-      // Randen
-      "--color-border":     "#57534E",   // subtiele rand
-      "--color-border-focus":"#C15F3C",  // focus ring = Crail
+      // Borders
+      "--color-border":         "#57534E",
+      "--color-border-subtle":  "#3C3836",
 
-      // Tekst
-      "--color-text":       "#F4F3EE",   // primaire tekst = Pampas
-      "--color-text-muted": "#B1ADA1",   // subtiele tekst = Cloudy
-      "--color-text-faint": "#78716C",   // nog subtieler (placeholders)
+      // Text
+      "--color-text-primary":   "#F4F3EE",
+      "--color-text-secondary": "#B1ADA1",
+      "--color-text-muted":     "#78716C",
 
-      // Accent = Crail
+      // Accent — Crail
       "--color-accent":         "#C15F3C",
       "--color-accent-hover":   "#D4744F",
-      "--color-accent-active":  "#A84E2F",
-      "--color-accent-subtle":  "#3D2318",  // achtergrond bij accent-items
 
-      // Slider fill
+      // Slider
       "--color-slider-fill":    "#C15F3C",
-      "--color-slider-track":   "#57534E",
-      "--color-slider-thumb":   "#F4F3EE",
 
-      // Histogram
-      "--color-histogram-bg":   "#1C1917",
-      "--color-histogram-r":    "#E05252",
-      "--color-histogram-g":    "#52A852",
-      "--color-histogram-b":    "#5280E0",
-      "--color-histogram-lum":  "#B1ADA1",
+      // Rating (Library — star rating)
+      "--color-rating":         "#D9A05B",
 
-      // Ratings / flags
-      "--color-star-filled":    "#C15F3C",
-      "--color-star-empty":     "#57534E",
-      "--color-pick":           "#6EBF8B",
-      "--color-reject":         "#E05252",
+      // Flags (Library — Pick / Reject)
+      "--color-flag-pick":      "#7A9B76",
+      "--color-flag-reject":    "#C1453C",
 
-      // Scrollbar
-      "--color-scrollbar-thumb":"#57534E",
-      "--color-scrollbar-track":"#1C1917",
+      // Catalog labels
+      "--color-label-red":      "#C1453C",
+      "--color-label-yellow":   "#D9A05B",
+      "--color-label-green":    "#7A9B76",
+      "--color-label-blue":     "#6B8CAE",
+      "--color-label-purple":   "#9B7AA3",
 
-      // Topmenu / toolbar
-      "--color-toolbar-bg":     "#292524",
-      "--color-toolbar-border": "#3C3836",
+      // Monospace font (EXIF / metadata panels)
+      "--font-mono": "'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace",
     },
   });
 }
 
-export function deactivate() {
-  // Safelight verwijdert theme-contributions automatisch bij deactivatie
-}
+export function deactivate() {}
