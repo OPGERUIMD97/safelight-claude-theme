@@ -14,7 +14,7 @@ A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight) i
 ## Full variable set
 
 This theme defines every CSS variable Safelight currently supports (per the
-[official theming tutorial](https://github.com/anthonyreimche/SafeLight/discussions/75)):
+[official theming tokens](https://github.com/anthonyreimche/SafeLight/blob/main/docs/dev/api/components.md#theming-tokens)):
 
 ```
 --color-surface-0 .. --color-surface-4
@@ -26,12 +26,16 @@ This theme defines every CSS variable Safelight currently supports (per the
 --color-accent
 --color-accent-hover
 --color-slider-fill
+--color-on-accent
 --color-rating
 --color-flag-pick
 --color-flag-reject
 --color-label-red / yellow / green / blue / purple
---font-mono
+--font-code
 ```
+
+`--font-mono` (the interface font in Safelight 3.x) is intentionally left unset
+so **Preferences ▸ Interface ▸ Interface font** keeps working.
 
 ## Installation
 
@@ -45,11 +49,15 @@ Then apply via **View ▸ Theme**.
 
 ## Notes
 
-- This theme is built against Safelight v2.3.x variable names.
+- This theme is built against Safelight 3.x variable names.
 - If CSS variable names change in future versions, please open an issue.
 - If some colors don't apply correctly, open the browser dev tools (F12), inspect the element, and let me know which CSS variable name is used — I'll update the theme.
 
 ## Changelog
+
+### 1.2.0
+- Safelight 3.x compatibility: added `--color-on-accent` (text/icons on accent and slider fills).
+- Moved the monospace stack from `--font-mono` to `--font-code`. In 3.x, `--font-mono` is the whole interface font; leaving it unset preserves the user's Interface font preference (Afacad / JetBrains Mono).
 
 ### 1.1.0
 - Added `"categories": "Themes"` to the manifest — likely required for Safelight to correctly register and apply the theme (was previously missing, possibly causing the theme not to apply at all and showing a fallback black background across all extension panels).

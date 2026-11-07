@@ -4,6 +4,9 @@
 //   Pampas  #F4F3EE  — off-white (primary text)
 //   Cloudy  #B1ADA1  — light grey (muted text)
 //   Stone   #1C1917  — darkest background
+//
+// Built for Safelight 3.x theming tokens
+// (docs/dev/api/components.md → Theming tokens).
 
 export function activate(api) {
   api.registerTheme({
@@ -34,6 +37,9 @@ export function activate(api) {
       // Slider
       "--color-slider-fill":    "#C15F3C",
 
+      // Text / icons on accent and slider-fill fills (Safelight 3.x)
+      "--color-on-accent":      "#FFFFFF",
+
       // Rating (Library — star rating)
       "--color-rating":         "#D9A05B",
 
@@ -48,8 +54,12 @@ export function activate(api) {
       "--color-label-blue":     "#6B8CAE",
       "--color-label-purple":   "#9B7AA3",
 
-      // Monospace font (EXIF / metadata panels)
-      "--font-mono": "'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace",
+      // Interface font: leave unset so Preferences ▸ Interface font
+      // (Afacad / JetBrains Mono) keeps working. In Safelight 3.x,
+      // --font-mono is the UI font, not monospace.
+      //
+      // Monospace for code / EXIF / metadata panels:
+      "--font-code": "'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, ui-monospace, monospace",
     },
   });
 }
