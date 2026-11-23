@@ -5,5 +5,15 @@
   "description": "Warm dark theme inspired by Claude's color palette — Crail (#C15F3C), Pampas (#F4F3EE), Cloudy (#B1ADA1)",
   "author": "OPGERUIMD97",
   "main": "index.js",
-  "categories": "Themes"
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "warm",
+    "orange"
+  ],
+  "license": "MIT",
+  "repository": "OPGERUIMD97/safelight-claude-theme"
 }

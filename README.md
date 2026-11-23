@@ -1,43 +1,8 @@
-# Claude Theme for Safelight
+# Claude Theme
 
-A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight) inspired by Claude's color palette.
+A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight), inspired by Claude's colour palette. Rust-orange accent and slider, off-white text and warm stone-grey panels.
 
-## Colors
-
-| Name    | Hex       | Role                        |
-|---------|-----------|-----------------------------|
-| Crail   | `#C15F3C` | Accent, sliders, focus ring |
-| Pampas  | `#F4F3EE` | Primary text                |
-| Cloudy  | `#B1ADA1` | Muted text, icons           |
-| Stone   | `#1C1917` | Deepest background          |
-
-## Full variable set
-
-This theme defines every CSS variable Safelight currently supports (per the
-[official theming tokens](https://github.com/anthonyreimche/SafeLight/blob/main/docs/dev/api/components.md#theming-tokens)):
-
-```
---color-surface-0 .. --color-surface-4
---color-border
---color-border-subtle
---color-text-primary
---color-text-secondary
---color-text-muted
---color-accent
---color-accent-hover
---color-slider-fill
---color-on-accent
---color-rating
---color-flag-pick
---color-flag-reject
---color-label-red / yellow / green / blue / purple
---font-code
-```
-
-`--font-mono` (the interface font in Safelight 3.x) is intentionally left unset
-so **Preferences ▸ Interface ▸ Interface font** keeps working.
-
-## Installation
+## Install
 
 In Safelight, go to **View ▸ Extensions** and enter:
 
@@ -45,27 +10,49 @@ In Safelight, go to **View ▸ Extensions** and enter:
 OPGERUIMD97/safelight-claude-theme
 ```
 
-Then apply via **View ▸ Theme**.
+Then apply it via **View ▸ Theme**.
+
+## Palette
+
+| Role | Hex | Safelight token |
+| --- | --- | --- |
+| Deepest background (Stone) | `#1C1917` | `--color-surface-0` |
+| Panels | `#292524` | `--color-surface-1` |
+| Panel headers | `#3C3836` | `--color-surface-2` |
+| Selected | `#504A47` | `--color-surface-3` |
+| Hover | `#615A56` | `--color-surface-4` |
+| Control borders | `#57534E` | `--color-border` |
+| Subtle borders | `#3C3836` | `--color-border-subtle` |
+| Body text (Pampas) | `#F4F3EE` | `--color-text-primary` |
+| Labels, icons (Cloudy) | `#B1ADA1` | `--color-text-secondary` |
+| Placeholder | `#78716C` | `--color-text-muted` |
+| Accent (Crail) | `#C15F3C` | `--color-accent` |
+| Accent hover | `#D4744F` | `--color-accent-hover` |
+| Slider fill (Crail) | `#C15F3C` | `--color-slider-fill` |
+| Text on accent | `#FFFFFF` | `--color-on-accent` |
+| Stars | `#D9A05B` | `--color-rating` |
+| Pick flag | `#7A9B76` | `--color-flag-pick` |
+| Reject flag | `#C1453C` | `--color-flag-reject` |
+| Labels red / yellow / green / blue / purple | `#C1453C` `#D9A05B` `#7A9B76` `#6B8CAE` `#9B7AA3` | `--color-label-*` |
 
 ## Notes
 
-- This theme is built against Safelight 3.x variable names.
-- If CSS variable names change in future versions, please open an issue.
-- If some colors don't apply correctly, open the browser dev tools (F12), inspect the element, and let me know which CSS variable name is used — I'll update the theme.
+- `--font-mono` is left unset. In Safelight 3.x that variable is the interface font, and setting it would override **Preferences ▸ Interface ▸ Interface font**. The monospace stack sits in `--font-code`.
+- Built against the Safelight 3.x theming tokens. If a colour doesn't apply after a Safelight update, open an issue with the element and the variable it uses (dev tools, F12).
 
 ## Changelog
 
 ### 1.2.0
-- Safelight 3.x compatibility: added `--color-on-accent` (text/icons on accent and slider fills).
-- Moved the monospace stack from `--font-mono` to `--font-code`. In 3.x, `--font-mono` is the whole interface font; leaving it unset preserves the user's Interface font preference (Afacad / JetBrains Mono).
+- Safelight 3.x: added `--color-on-accent` (text and icons on the accent and slider fill).
+- Moved the monospace stack from `--font-mono` to `--font-code`, so the Interface font preference keeps working.
 
 ### 1.1.0
-- Added `"categories": "Themes"` to the manifest — likely required for Safelight to correctly register and apply the theme (was previously missing, possibly causing the theme not to apply at all and showing a fallback black background across all extension panels).
-- Fixed `main` field: pointed to `index.js` in the project root instead of a nonexistent `dist/index.js`.
-- Added the full set of catalog/rating/label/font variables that were missing from the original release: `--color-rating`, `--color-flag-pick`, `--color-flag-reject`, `--color-label-red/yellow/green/blue/purple`, `--font-mono`.
+- Added `"categories": "Themes"` to the manifest so Safelight registers it as a theme.
+- Fixed `main` to point at `index.js` in the repo root.
+- Added the rating, flag, colour-label and font variables.
 
 ### 1.0.0
-- Initial release with surface, border, text, accent, and slider variables.
+- First release: surfaces, borders, text, accent and slider.
 
 ## License
 
