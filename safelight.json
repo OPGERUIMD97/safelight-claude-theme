@@ -1,7 +1,7 @@
 {
   "id": "claude-theme",
   "name": "Claude Theme",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Warm dark theme inspired by Claude's color palette — Crail (#C15F3C), Pampas (#F4F3EE), Cloudy (#B1ADA1)",
   "author": "OPGERUIMD97",
   "main": "index.js",
@@ -15,5 +15,6 @@
     "orange"
   ],
   "license": "MIT",
-  "repository": "OPGERUIMD97/safelight-claude-theme"
+  "repository": "OPGERUIMD97/safelight-claude-theme",
+  "minAppVersion": "3.0.0"
 }

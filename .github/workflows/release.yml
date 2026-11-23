@@ -1,0 +1,85 @@
+# Safelight extension release. Pushing a tag like v1.0.0 checks that
+# safelight.json says the same version, zips the runtime files and publishes
+# a GitHub Release. A tag with a "-" is a pre-release.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  RELEASE_FILES: safelight.json index.js README.md LICENSE
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check the manifest matches the tag
+        run: |
+          node -e '
+            const fs = require("fs");
+            const norm = (v) => {
+              const [core, ...pre] = String(v).replace(/^v/i, "").split("+")[0].split("-");
+              const parts = core.split(".").map(Number);
+              while (parts.length < 3) parts.push(0);
+              return [parts.join("."), ...pre].join("-");
+            };
+            const tag = process.env.GITHUB_REF_NAME;
+            const m = JSON.parse(fs.readFileSync("safelight.json", "utf8"));
+            if (norm(m.version) !== norm(tag)) {
+              console.error(`safelight.json says ${m.version}, but the tag is ${tag}.`);
+              process.exit(1);
+            }
+            if (!fs.existsSync(m.main)) {
+              console.error(`The main bundle ${m.main} is missing.`);
+              process.exit(1);
+            }
+          '
+
+      - name: Zip
+        id: zip
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          ZIP="${REPO_NAME}-${GITHUB_REF_NAME#v}.zip"
+          FILES=""
+          for f in $RELEASE_FILES; do
+            if [ -e "$f" ]; then FILES="$FILES $f"; fi
+          done
+          zip -r "$ZIP" $FILES
+          echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
+
+      - name: Check the zip contains main
+        env:
+          ZIP: ${{ steps.zip.outputs.zip }}
+        run: |
+          MAIN=$(node -e 'process.stdout.write(String(JSON.parse(require("fs").readFileSync("safelight.json", "utf8")).main).replace(/^\.\//, ""))')
+          if ! unzip -Z1 "$ZIP" | grep -qxF "$MAIN"; then
+            echo "The release zip doesn't contain $MAIN."
+            exit 1
+          fi
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ZIP: ${{ steps.zip.outputs.zip }}
+        run: |
+          PRE=""
+          case "$GITHUB_REF_NAME" in *-*) PRE="--prerelease" ;; esac
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "$ZIP" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "$ZIP" --generate-notes --verify-tag $PRE
+          fi
