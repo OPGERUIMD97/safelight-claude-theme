@@ -1,6 +1,6 @@
 # Claude Theme
 
-A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight). Rust-orange accent and slider, off-white text and warm stone-grey panels.
+A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight). Rust-orange accent, off-white text and warm stone-grey panels.
 
 ## Install
 
@@ -39,6 +39,10 @@ Then apply it via **View ▸ Theme**. No build step; `index.js` is the bundle.
 - There is no separate develop-surround colour, so the area around the photo uses the canvas.
 
 ## Changelog
+
+### 1.2.3
+
+- The description matches the README.
 
 ### 1.2.2
 
