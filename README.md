@@ -1,6 +1,6 @@
 # Claude Theme
 
-A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight), inspired by Claude's colour palette. Rust-orange accent and slider, off-white text and warm stone-grey panels.
+A warm dark theme for [Safelight](https://github.com/anthonyreimche/SafeLight). Rust-orange accent and slider, off-white text and warm stone-grey panels.
 
 ## Install
 
@@ -10,7 +10,7 @@ In Safelight, go to **View ▸ Extensions** and enter:
 OPGERUIMD97/safelight-claude-theme
 ```
 
-Then apply it via **View ▸ Theme**.
+Then apply it via **View ▸ Theme**. No build step; `index.js` is the bundle.
 
 ## Palette
 
@@ -36,19 +36,28 @@ Then apply it via **View ▸ Theme**.
 
 - `--font-mono` is left unset, so **Preferences ▸ Interface ▸ Interface font** keeps working (in Safelight 3.x that variable is the interface font).
 - Flags and colour labels use matching warm tones: pick `#7A9B76`, reject `#C1453C`.
+- There is no separate develop-surround colour, so the area around the photo uses the canvas.
 
 ## Changelog
 
+### 1.2.2
+
+- The name in the theme list is Claude Theme. The README uses the same sections as the other themes.
+
 ### 1.2.1
-- First GitHub release; README and manifest in the same layout as the other themes.
+
+- First GitHub release.
 
 ### 1.2.0
+
 - Safelight 3.x: `--color-on-accent` added, monospace stack moved to `--font-code`.
 
 ### 1.1.0
+
 - Registered as a theme; rating, flag, label and font variables added.
 
 ### 1.0.0
+
 - First version.
 
 ## License

@@ -1,4 +1,4 @@
-// Claude — Warm Dark theme for Safelight
+// Claude Theme — warm dark theme for Safelight
 // Palette:
 //   Crail   #C15F3C  — warm rust-orange (accent)
 //   Pampas  #F4F3EE  — off-white (primary text)
@@ -11,7 +11,7 @@
 export function activate(api) {
   api.registerTheme({
     id: "claude-theme.dark",
-    name: "Claude — Warm Dark",
+    name: "Claude Theme",
     colorScheme: "dark",
     vars: {
       // Surfaces (0 = deepest, 4 = hover/highlight)
